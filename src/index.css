@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    --grid-gap: 15px;
+}
+
+
+@layer base {
+    img{
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .smart-grid{
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0  calc(-1 * var(--grid-gap)) calc( -2 * var(--grid-gap));
+
+    }
+    .smart-cell{
+        width: calc(100% / 3 - 3 * var(--grid-gap));
+        margin: 0 var(--grid-gap) calc(2 * var(--grid-gap)) ;
+        box-sizing: border-box;
+    }
+    @media screen and (max-width: 1080px) {
+        .smart-cell{
+            width: calc(100% / 2 - 2 * var(--grid-gap));
+        }
+    }
+    @media screen and (max-width: 576px) {
+        .smart-cell{
+            width: calc(100%);
+        }
+    }
+
+
+
+
+
+
+
+    .item-hover{
+        @apply hover:text-forest-green transition duration-700;
+
+    }
+    .btn-p{
+        @apply px-[29px] py-[14.5px] md:px-[51.5px] md:py-[18.5px] 2xl:px-[60px] 2xl:py-[21px]
+    }
+    .btn-border{
+        @apply border border-forest-green
+    }
+    .basic-text{
+        @apply font-medium font-raleway;
+    }
+    .btn-bg{
+        @apply hover:bg-forest-green ;
+    }
+    .btn-text-green{
+        @apply text-forest-green hover:text-white
+    }
+
+
+    .drop-container{
+        @apply w-auto px-0 mx-0;
+    }
+}
