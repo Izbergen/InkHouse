@@ -2,7 +2,7 @@ import {motion} from "framer-motion";
 import PropTypes from "prop-types";
 
 
-const MotionNavBar = function ({menuIsClicked, setMenuIsClicked, menuRender}) {
+const MotionMenu = function ({menuIsClicked, setMenuIsClicked, menuRender}) {
     return (
         <motion.div
             className={'fixed z-50 top-0 left-0 w-full h-full bg-pale-grey'}
@@ -18,7 +18,7 @@ const MotionNavBar = function ({menuIsClicked, setMenuIsClicked, menuRender}) {
                 duration: 0.5,
             }}
         >
-            <div className={'container'}>
+            <div className={'container '}>
                 <nav className={'py-4'}>
                     <div className={'mb-8'}>
                         <svg
@@ -49,10 +49,10 @@ const MotionNavBar = function ({menuIsClicked, setMenuIsClicked, menuRender}) {
     )
 }
 
-MotionNavBar.propTypes = {
+MotionMenu.propTypes = {
     setMenuIsClicked: PropTypes.func.isRequired,
     menuRender: PropTypes.func.isRequired,
     menuIsClicked: PropTypes.bool.isRequired,
 }
 
-export default MotionNavBar;
+export default MotionMenu;

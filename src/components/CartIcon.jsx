@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import If from "./If.jsx";
 
-const CartSvg = function ({ cartElems }) {
+const CartIcon = function ({ cartElems = 0 }) {
     return (
         <svg className={'text-primary-black item-hover relative'}
              width="24"
@@ -26,7 +26,7 @@ const CartSvg = function ({ cartElems }) {
                     <text
                         fill="white"
                         fontSize="10"
-                        x={6}
+                        x={cartElems >= 10 ? 3 : 6}
                         y={12}
                         fontWeight="bold"
                         fontFamily="Raleway , sans-serif"
@@ -48,8 +48,8 @@ const CartSvg = function ({ cartElems }) {
     )
 }
 
-CartSvg.propTypes = {
-    cartElems: PropTypes.number.isRequired,
+CartIcon.propTypes = {
+    cartElems: PropTypes.number,
 }
 
-export default CartSvg;
+export default CartIcon;

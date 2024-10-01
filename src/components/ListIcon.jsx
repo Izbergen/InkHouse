@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const MenuSvg = function ({ setMenuIsClicked }) {
+const ListIcon = function ({ setMenuIsClicked }) {
     return (
         <svg className={'text-slate-grey item-hover sm:hidden '}
              onClick={() => {
@@ -17,8 +17,8 @@ const MenuSvg = function ({ setMenuIsClicked }) {
         </svg>
     );
 }
-MenuSvg.propTypes = {
+ListIcon.propTypes = {
     setMenuIsClicked: PropTypes.func.isRequired,
 }
 
-export default MenuSvg;
+export default ListIcon;
