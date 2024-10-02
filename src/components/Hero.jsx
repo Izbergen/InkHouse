@@ -1,4 +1,4 @@
-import LayerImage from "../assets/layer.svg";
+import LayerImage from "../assets/layer.png";
 import Button from "./Button.jsx";
 
 const Hero = () => (
