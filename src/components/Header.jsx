@@ -1,4 +1,4 @@
-import MainIcon from './../assets/main-icon.svg'
+import MainIcon from './../assets/image/main-icon.svg'
 
 import { useState } from 'react'
 import CartIcon from "./CartIcon.jsx";

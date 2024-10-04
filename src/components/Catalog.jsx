@@ -1,6 +1,7 @@
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import Tabs from "./Tabs.jsx";
 import CatalogItem from "./CatalogItem.jsx";
+import {ApiContext} from "../context/ApiContext.js";
 
 const Catalog = function (id) {
     const [tabs, setTabs] = useState([
@@ -10,14 +11,13 @@ const Catalog = function (id) {
     ]);
     const [clickedItems, setClickedItems] = useState({});
     const [currentCatalog, setCurrentCatalog] = useState('france');
-    const [catalog, setCatalog] = useState(null);
+    const [catalog, setCatalog] = useState([]);
+    const api = useContext(ApiContext);
 
-    useEffect(() => {
-            fetch(`http://localhost:3000/${currentCatalog}`).
-            then(res => res.json()).
-            then((data) => setCatalog(data))
+    useEffect( () => {
+        api.getCatalog(currentCatalog).then(catalogData => setCatalog(catalogData));
 
-        },[currentCatalog]
+        },[api ,currentCatalog]
     )
     function handleTabClick(currentTab){
         setTabs(prevTabs =>
@@ -28,7 +28,7 @@ const Catalog = function (id) {
         setCurrentCatalog(currentTab.name);
     }
 
-    function renderCatalogItems(){
+    function renderCatalogItems() {
         const handleClick = (id) => {
             setClickedItems((prevState) => ({
                 ...prevState,
@@ -36,18 +36,18 @@ const Catalog = function (id) {
             }));
         };
 
-        return catalog ?
-            catalog.map((item) =>
+        return Array.isArray(catalog) && catalog.length > 0
+            ? catalog.map((item) => (
                 <CatalogItem
                     key={item.id}
                     item={item}
                     handleClick={() => handleClick(item.id)}
-                    isClicked={clickedItems[item.id]}
+                    isClicked={!!clickedItems[item.id]}
                 />
-            )
-            :
-            'Error ..... ';
+            ))
+            : 'No items found';
     }
+
 
 
     return (
