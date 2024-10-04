@@ -51,17 +51,17 @@ const Catalog = function (id) {
 
 
     return (
-        <section id={id}>
+        <>
             <div className={'container'}>
                 <header className={'flex-col flex gap-5 mb-5 md:flex-row justify-between'}>
                     <h2 className={'text-2xl basic-text text-primary-black md:text-3xl lg:text-[40px]'}>Репродукции</h2>
-                    <Tabs tabs={tabs} handleTabClick={handleTabClick} />
+                    <Tabs tabs={tabs} handleTabClick={handleTabClick}/>
                 </header>
                 <div className={'smart-grid'}>
                     {renderCatalogItems()}
                 </div>
             </div>
-        </section>
-    )
+        </>
+)
 }
 export default Catalog;

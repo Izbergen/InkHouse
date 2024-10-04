@@ -1,26 +1,26 @@
-// useFetch.js
-import { useEffect, useState } from "react";
+import {useEffect, useState} from "react";
 
 function useFetch(url) {
-    const [res, setRes] = useState({ loading: true, data: null, error: null });
-
+    const [res , setRes] = useState({ loading: true, data: null , error: null });
     useEffect(() => {
-        const fetchData = async () => {
-            try {
-                setRes({ loading: true, data: null, error: null });
-                const response = await fetch(url);
-                if (!response.ok) throw new Error(`Error: ${response.status}`);
-                const result = await response.json();
-                setRes({ loading: false, data: result.data, error: null });
-            } catch (error) {
-                setRes({ loading: false, data: null, error });
-            }
-        };
+            setRes({loading: true, data: null , error: null});
 
-        fetchData();
-    }, [url]);
+            fetch(url)
+                .then(res =>
+                    {
+                        if(!res.ok) throw new Error(`Error fetching data : ${res.status}`);
+                        return res.json();
+                    }
+                )
+                .then( res => setRes({loading: false, data: res.data, error: null}))
+                .catch( err => setRes({ loading: false, data: null, error: err }));
+        }, [url]
+    );
+
 
     return res;
-}
 
+
+
+}
 export default useFetch;

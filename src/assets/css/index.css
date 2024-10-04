@@ -5,6 +5,9 @@
 :root {
     --grid-gap: 15px;
 }
+html{
+    scroll-behavior: smooth;
+}
 
 
 @layer base {

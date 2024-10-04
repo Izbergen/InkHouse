@@ -5,6 +5,7 @@ import CartIcon from "./CartIcon.jsx";
 import ListIcon from "./ListIcon.jsx";
 import MotionMenu from "./MotionMenu.jsx";
 import PropTypes from "prop-types";
+import { Link } from 'react-scroll';
 
 function Header({hrefs}) {
     const [menuIsClicked , setMenuIsClicked] = useState(false);
@@ -17,9 +18,9 @@ function Header({hrefs}) {
     function menuRender(menuItems) {
         return menuItems.map(item => {
             return (
-                <a className={'item-hover basic-text text-lg text-primary-black'} href={`#${item.href}`} key={item.id}>
+                <Link className={'item-hover basic-text text-lg text-primary-black'} to={item.href} key={item.id} smooth={true} duration={500}>
                     {item.name}
-                </a>
+                </Link>
             )
         })
     }

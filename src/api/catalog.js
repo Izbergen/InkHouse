@@ -1,4 +1,3 @@
-// catalog.js
 import http from './http.js';
 
 export default async (catalogName) => {
