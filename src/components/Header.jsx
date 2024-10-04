@@ -40,7 +40,7 @@ function Header({hrefs}) {
                             {menuRender(menuItems)}
                         </div>
 
-                        <CartIcon cartElems={10} />
+                        <CartIcon />
                     </div>
 
                     <MotionMenu setMenuIsClicked={(value) => setMenuIsClicked(value)} menuRender={() => menuRender(menuItems)} menuIsClicked={menuIsClicked} />

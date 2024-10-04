@@ -1,7 +1,10 @@
 import {useContext, useEffect, useState} from "react";
+
 import Tabs from "./Tabs.jsx";
 import CatalogItem from "./CatalogItem.jsx";
+
 import {ApiContext} from "../context/ApiContext.js";
+
 
 const Catalog = function (id) {
     const [tabs, setTabs] = useState([
@@ -9,7 +12,7 @@ const Catalog = function (id) {
         { id: 2 , name: 'german' , content: 'Германия', active: false },
         { id: 3 , name: 'england' , content: 'Англия', active: false }
     ]);
-    const [clickedItems, setClickedItems] = useState({});
+
     const [currentCatalog, setCurrentCatalog] = useState('france');
     const [catalog, setCatalog] = useState([]);
     const api = useContext(ApiContext);
@@ -29,20 +32,12 @@ const Catalog = function (id) {
     }
 
     function renderCatalogItems() {
-        const handleClick = (id) => {
-            setClickedItems((prevState) => ({
-                ...prevState,
-                [id]: !prevState[id],
-            }));
-        };
 
         return Array.isArray(catalog) && catalog.length > 0
             ? catalog.map((item) => (
                 <CatalogItem
                     key={item.id}
                     item={item}
-                    handleClick={() => handleClick(item.id)}
-                    isClicked={!!clickedItems[item.id]}
                 />
             ))
             : 'No items found';

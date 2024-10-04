@@ -1,7 +1,10 @@
-import PropTypes from "prop-types";
 import If from "./If.jsx";
 
-const CartIcon = function ({ cartElems = 0 }) {
+import {useSelector} from "react-redux";
+import {selectCartCount} from "../store/cartSlice.js";
+
+const CartIcon = function () {
+    let cartElems = useSelector(selectCartCount);
     return (
         <svg className={'text-primary-black item-hover relative'}
              width="24"
@@ -46,10 +49,6 @@ const CartIcon = function ({ cartElems = 0 }) {
 
         </svg>
     )
-}
-
-CartIcon.propTypes = {
-    cartElems: PropTypes.number,
 }
 
 export default CartIcon;
